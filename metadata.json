@@ -1,0 +1,5 @@
+{
+  "name": "Smart Reconcile AI case 1",
+  "description": "แอปพลิเคชันสำหรับกระทบยอดรายการทางการเงิน (Bank Reconciliation) อัจฉริยะ ช่วยจับคู่รายการระหว่าง Bank Statement และ General Ledger (GL) โดยอัตโนมัติ พร้อมฟีเจอร์ AI วิเคราะห์ความผิดพลาด",
+  "requestFramePermissions": []
+}
