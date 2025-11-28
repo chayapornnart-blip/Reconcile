@@ -2,7 +2,10 @@ import { GoogleGenAI } from "@google/genai";
 import { Transaction, AIAnalysisResult } from '../types';
 
 const getClient = () => {
-  const apiKey = process.env.API_KEY;
+  // Vite uses import.meta.env.VITE_... for client-side environment variables
+  // Check VITE_API_KEY first, fallback to process.env.API_KEY for compatibility if needed
+  const apiKey = import.meta.env.VITE_API_KEY || (typeof process !== 'undefined' ? process.env.API_KEY : undefined);
+  
   if (!apiKey) return null;
   return new GoogleGenAI({ apiKey });
 };
@@ -14,7 +17,7 @@ export const analyzeUnmatched = async (
   const client = getClient();
   if (!client) {
     return {
-      insights: ["ไม่พบ API Key กรุณาตรวจสอบการตั้งค่า"],
+      insights: ["ไม่พบ API Key กรุณาตรวจสอบการตั้งค่า VITE_API_KEY ใน .env หรือ Vercel Settings"],
       suggestions: []
     };
   }
